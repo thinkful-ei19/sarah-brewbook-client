@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import {fetchBrews} from './actions/brewsAct';
+import AddBrew from './components/add-brew';
 import BrewList from './components/brewList';
 
 
@@ -19,12 +20,21 @@ componentDidMount() {
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">BrewBook</h1>
         </header>
+        <AddBrew />
         <div className="brewList">
           <p className="App-intro">
            MY BREWS
           </p>
           <BrewList />
         </div>
+        <form className="calculators">
+          <label htmlFor="originalGravity">Original Gravity</label>
+          <input id="originalGravity" label="Original Gravity (OG)" />
+          <label htmlFor="finalGravity">Final Gravity</label>
+          <input id="finalGravity" label="Final Gravity (FG)" />
+          <label htmlFor="abv">Alcohol By Volume (ABV)</label>
+          <ouput id="abv" label="Alcohol By Volume (ABV)"  />
+        </form>
       </div>
     );
   }
