@@ -1,18 +1,75 @@
 import React from 'react';
+import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import Input from '../components/input';
+import { required } from '../validators';
+import { addBrew, createBrew } from '../actions/brewsAct';
 
 //Need to convert to link that opens form. Form will have inputs for name, recipe and brewers notes. Will change state of adding to true.
 
-function AddBrew() {
+export class AddBrewForm extends React.Component{ 
+  onSubmit(value) {
+       this.props.dispatch(addBrew(value));
+       this.props.dispatch(createBrew(value.name, value.recipe, value.notes));
 
-  return (
-    <form className="addBrew" onSubmit={(event)=> {
-      event.preventDefault()
-      console.log('submit clicked')
-    }}>
-      <input type="text" name="name" />
-      <button>Submit</button>
-    </form>
-  )
+   }
+   
+   render(){
+       return(
+           <form className="addBrew"
+               onSubmit={this.props.handleSubmit(values =>
+                   this.onSubmit(values)
+           )}
+           >
+           <label htmlFor="addBrew">Brew:</label>
+               <Field 
+                   component="input"
+                   type="text"
+                   name="name"
+                   placeholder="IPA"
+                   validate={[required]}
+               />
+           <br/>
+           <label htmlFor="addRecipe">Recipe:</label>
+               <Field 
+                   component="textarea"
+                   type="text"
+                   name="recipe"
+                   placeholder="add recipe"
+                   validate={[required]}
+
+               />
+           <br/>
+           <label htmlFor="addNotes">Brewer's notes:</label>
+               <Field 
+                   component="textarea"
+                   type="text"
+                   name="notes"
+                   placeholder="add notes here"
+               />
+
+
+               <br/>
+               <button type="submit">Submit</button>
+           </form>
+       )
+   }
 }
 
-export default AddBrew
+export default reduxForm({
+   form: 'brew',
+})(AddBrewForm);
+
+// function AddBrew() {
+
+//   return (
+//     <form className="addBrew" onSubmit={(event)=> {
+//       event.preventDefault()
+//       console.log('submit clicked')
+//     }}>
+//       <input type="text" name="name" />
+//       <button>Submit</button>
+//     </form>
+//   )
+// }
+
+// export default AddBrew

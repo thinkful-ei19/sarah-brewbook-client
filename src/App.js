@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import {fetchBrews} from './actions/brewsAct';
-import AddBrew from './components/add-brew-form';
+import AddBrewForm from './components/add-brew-form';
 import BrewList from './components/brewList';
 
 
@@ -20,7 +20,7 @@ componentDidMount() {
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">BrewBook</h1>
         </header>
-        <AddBrew />
+        <AddBrewForm />
         <div className="brewList">
           <p className="App-intro">
            MY BREWS

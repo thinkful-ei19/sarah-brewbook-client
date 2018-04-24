@@ -38,6 +38,7 @@ const brewsReducer = (state =  initialState, action) => {
       loading: false
     })
   }
+  console.log(action)
   return state
 }
 

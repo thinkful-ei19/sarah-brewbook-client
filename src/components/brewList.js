@@ -5,7 +5,7 @@ import './brew-list.css';
 
 class BrewList extends React.Component {
   componentDidMount(){
-    console.log(this.props)
+    // console.log(this.state.brews.props)
     this.props.dispatch(fetchBrews())
   }
 
@@ -13,10 +13,9 @@ class BrewList extends React.Component {
 render() {
 
   console.log(this.props);
-  const brewList = this.props.brews.map((brew, index)=>{
+  const brewList = this.props.brews.brews.map((brew, index)=>{
     return(
-        <li key={index}> {brew} </li>
-        //will need to change to brew.name
+        <li key={index}> {brew.name} </li>
     )
 })
   return(
