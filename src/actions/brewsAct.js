@@ -17,6 +17,12 @@ export const fetchBrewsError = (error) => ({
     error
 });
 
+export const ADD_BREW='ADD_BREW'
+export const addBrew = (brew) => ({
+  type: ADD_BREW,
+  brew
+})
+
 
 export const fetchBrews = brews => dispatch => {
   dispatch(fetchBrewsRequest()); //tells us we've begun loading
