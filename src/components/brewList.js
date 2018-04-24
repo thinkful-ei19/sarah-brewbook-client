@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { fetchBrews } from '../actions/brewsAct';
 import './brew-list.css';
-//import {some action} from '../actions/action'
 
 class BrewList extends React.Component {
   componentDidMount(){
@@ -17,6 +16,7 @@ render() {
   const brewList = this.props.brews.map((brew, index)=>{
     return(
         <li key={index}> {brew} </li>
+        //will need to change to brew.name
     )
 })
   return(

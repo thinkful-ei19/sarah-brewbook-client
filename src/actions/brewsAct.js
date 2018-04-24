@@ -1,4 +1,6 @@
 import { API_BASE_URL } from '../config';
+import { SubmissionError } from 'redux-form';
+import { normalizeResponseErrors } from './utils';
 
 export const FETCH_BREWS_REQUEST = 'FETCH_BREWS_REQUEST'
 export const fetchBrewsRequest = () => ({
@@ -38,3 +40,24 @@ export const fetchBrews = brews => dispatch => {
       .then(brews => console.log(brews))
       .catch(err => dispatch(fetchBrewsError(err)));
   }
+
+  export const createBrew = (name, recipe, notes) => dispatch => {
+    
+    return (
+        fetch(`${API_BASE_URL}/api/brews`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                recipe,
+                notes
+            })
+        })
+            .then(res => normalizeResponseErrors(res))
+            .then(res => res.json())
+            .then((body) => console.log(body))
+            
+    );
+}

@@ -1,7 +1,8 @@
 import {
   FETCH_BREWS_REQUEST,
   FETCH_BREWS_SUCCESS,
-  FETCH_BREWS_ERROR
+  FETCH_BREWS_ERROR,
+  ADD_BREW
 } from '../actions/brewsAct';
 
 const initialState = {
@@ -30,6 +31,12 @@ const brewsReducer = (state =  initialState, action) => {
       error: action.error,
       loading: false
     });
+  } else if (action.type === ADD_BREW) {
+    return Object.assign({}, state, {
+      brews: [...state.brews, action.brew],
+      error: null,
+      loading: false
+    })
   }
   return state
 }
