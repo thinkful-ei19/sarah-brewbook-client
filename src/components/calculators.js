@@ -1,9 +1,5 @@
 import React from 'react';
 
-import NumberInput from './number-input';
-import Output from './output';
-
-
 export default class Calculator extends React.Component {
     constructor(props) {
         super(props);
@@ -14,30 +10,27 @@ export default class Calculator extends React.Component {
         };
     }
 
-    // setDayRate(dayRate) {
-    //     this.setState({
-    //         dayRate
-    //     });
-    // }
+    calculate(og, fg) {
+        return(og - fg) * 131.25;
+    }
 
-    // setHours(hours) {
-    //     this.setState({
-    //         hours
-    //     });
-    // }
+    onChangeHandler() {
+        this.refs.outputID.value = `ABV is: ${this.calculate(this.refs.OGinput.value, this.refs.FGinput.value).toFixed(2)} %`;
+    }
 
     render() {
-        const rate = this.state.dayRate / this.state.hours;
         return (
             <form>
-                <NumberInput id="day-rate" label="Day rate" min={0} max={5000}
-                    value={this.state.dayRate}
-                    onChange={value => this.setDayRate(value)} />
-                <NumberInput id="hours" label="Hours" min={1} max={12}
-                    value={this.state.hours}
-                    onChange={value => this.setHours(value)}/>
-                <Output id="hourly-rate" label="Hourly rate" value={rate.toFixed(2)} />
-            </form>
+        <label htmlFor="OGinput">OG </label>
+        <input id="OGinput" name="OGinput" type="number" step="0.001" ref="OGinput" defaultValue="1.050" onChange={()=>this.onChangeHandler()}/>
+        <br/>
+        <br/>
+        <label htmlFor="FGinput">FG </label>
+        <input id="FGinput" name="FGinput" type="number" step="0.001" ref="FGinput" defaultValue="1.010" onChange={() => this.onChangeHandler()}/>
+        <br/>
+        <br/>
+        <output id="outputID" ref="outputID"></output>
+      </form>
         );
     }
 }

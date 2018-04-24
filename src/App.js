@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {fetchBrews} from './actions/brewsAct';
 import AddBrewForm from './components/add-brew-form';
 import BrewList from './components/brewList';
+import Calculator from './components/calculators';
 
 
 class App extends Component {
@@ -27,17 +28,12 @@ componentDidMount() {
           </p>
           <BrewList />
         </div>
-        <form className="calculators">
-          <label htmlFor="originalGravity">Original Gravity</label>
-          <input id="originalGravity" label="Original Gravity (OG)" />
-          <label htmlFor="finalGravity">Final Gravity</label>
-          <input id="finalGravity" label="Final Gravity (FG)" />
-          <label htmlFor="abv">Alcohol By Volume (ABV)</label>
-          <ouput id="abv" label="Alcohol By Volume (ABV)"  />
-        </form>
+        <Calculator />
       </div>
     );
   }
 }
+
+// "abv.value=(Number(OG.value)-Number(FG.value))* 131.25"
 
 export default connect()(App);
