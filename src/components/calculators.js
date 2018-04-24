@@ -29,7 +29,7 @@ export default class Calculator extends React.Component {
         <input id="FGinput" name="FGinput" type="number" step="0.001" ref="FGinput" defaultValue="1.010" onChange={() => this.onChangeHandler()}/>
         <br/>
         <br/>
-        <output id="outputID" ref="outputID"></output>
+        <output id="outputID" ref="outputID" defaultValue="5.25">ABV is: 5.25%</output>
       </form>
         );
     }
