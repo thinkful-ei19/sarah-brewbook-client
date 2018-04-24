@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import {fetchBrews} from './actions/brewsAct';
-import AddBrew from './components/add-brew';
+import AddBrew from './components/add-brew-form';
 import BrewList from './components/brewList';
 
 
