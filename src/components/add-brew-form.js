@@ -22,7 +22,8 @@ export class AddBrewForm extends React.Component{
            >
            <label htmlFor="addBrew">Brew:</label>
                <Field 
-                   component="input"
+                   component={Input}
+                   element="input"
                    type="text"
                    name="name"
                    placeholder="IPA"
@@ -31,7 +32,8 @@ export class AddBrewForm extends React.Component{
            <br/>
            <label htmlFor="addRecipe">Recipe:</label>
                <Field 
-                   component="textarea"
+                   component={Input}
+                   element="textarea"
                    type="text"
                    name="recipe"
                    placeholder="add recipe"
@@ -41,7 +43,8 @@ export class AddBrewForm extends React.Component{
            <br/>
            <label htmlFor="addNotes">Brewer's notes:</label>
                <Field 
-                   component="textarea"
+                   component={Input}
+                   element="textarea"
                    type="text"
                    name="notes"
                    placeholder="add notes here"
