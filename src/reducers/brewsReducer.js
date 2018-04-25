@@ -2,13 +2,15 @@ import {
   FETCH_BREWS_REQUEST,
   FETCH_BREWS_SUCCESS,
   FETCH_BREWS_ERROR,
-  ADD_BREW
+  ADD_BREW,
+  TOGGLE_EXPAND_BREW
 } from '../actions/brewsAct';
 
 const initialState = {
     brews: [],
     loading: false,
-    error: null
+    error: null,
+    expandBrew: false
 }
 
 const brewsReducer = (state =  initialState, action) => {
@@ -36,6 +38,10 @@ const brewsReducer = (state =  initialState, action) => {
       brews: [...state.brews, action.brew],
       error: null,
       loading: false
+    })
+  } else if (action.type === TOGGLE_EXPAND_BREW) {
+    return Object.assign({}, state, {
+      expandBrew: !state.expandBrew
     })
   }
   console.log(action)

@@ -25,6 +25,13 @@ export const addBrew = (brew) => ({
   brew
 });
 
+//success action for fetching one brew by id
+export const FETCH_BREW_SUCCESS = 'FETCH_BREWS_SUCCESS'
+export const fetchBrewSuccess = (brew) => ({
+    type:FETCH_BREW_SUCCESS,
+    brew
+});
+
 export const TOGGLE_EXPAND_BREW = 'EXPAND_BREW'
 export const toggleExpandBrew = (brew) => ({
   type: TOGGLE_EXPAND_BREW,
@@ -68,3 +75,18 @@ export const fetchBrews = brews => dispatch => {
             
     );
 }
+
+export const fetchBrew = brew => dispatch => {
+  dispatch(fetchBrewsRequest()); //tells us we've begun loading
+  return fetch(`${API_BASE_URL}/api/brews/:id`)
+      .then(res => {
+          console.log(res);
+        if(!res.ok) {
+          return Promise.reject('something went wrong');
+        }
+        return res.json();
+      })
+      // .then(brews => dispatch(fetchBrewsSuccess(brews)))
+      // .then(brews => console.log(brews))
+      // .catch(err => dispatch(fetchBrewsError(err)));
+  }

@@ -7,7 +7,7 @@ import { Router, Switch, Route } from 'react-router-dom'
 import AddBrewForm from './components/add-brew-form';
 import BrewList from './components/brewList';
 import Calculator from './components/calculators';
-import { SingleBrew } from './components/brew-card';
+import SingleBrew from './components/brew-card';
 
 
 class App extends Component {
@@ -26,11 +26,11 @@ componentDidMount() {
         </header>
         <Calculator />
         <AddBrewForm />
-        <BrewList />
-        {/* <Switch>
+        {/* <BrewList /> */}
+        <Switch>
           <Route exact path="/brews" component={BrewList} />
-          <Route exact path="/brews:id" component={SingleBrew} />
-        </Switch> */}
+          <Route exact path="/brews/:brewId" component={SingleBrew} />
+        </Switch>
       </div>
       // </Router>
     );
