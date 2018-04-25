@@ -43,7 +43,12 @@ const brewsReducer = (state =  initialState, action) => {
     return Object.assign({}, state, {
       expandBrew: !state.expandBrew
     })
-  }
+  } 
+  // else if (action.type === FETCH_BREW_SUCCESS) {
+  //   return Object.assign({}, state, {
+  //     brews: brews.action
+  //   })
+  // }
   console.log(action)
   return state
 }

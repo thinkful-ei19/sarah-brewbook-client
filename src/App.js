@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import {fetchBrews} from './actions/brewsAct';
-import { Router, Switch, Route } from 'react-router-dom'
-import AddBrewForm from './components/add-brew-form';
+import { Switch, Route } from 'react-router-dom'
+
 import BrewList from './components/brewList';
 import Calculator from './components/calculators';
 import SingleBrew from './components/brew-card';
@@ -25,8 +25,6 @@ componentDidMount() {
           <h1 className="App-title">BrewBook</h1>
         </header>
         <Calculator />
-        <AddBrewForm />
-        {/* <BrewList /> */}
         <Switch>
           <Route exact path="/brews" component={BrewList} />
           <Route exact path="/brews/:brewId" component={SingleBrew} />

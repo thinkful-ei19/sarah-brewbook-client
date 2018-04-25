@@ -1,5 +1,5 @@
 import React from 'react';
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 import Input from '../components/input';
 import { required } from '../validators';
 import { addBrew, createBrew } from '../actions/brewsAct';

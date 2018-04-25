@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 //brewcard will open when a brew is clicked. Will have brew name, recipe and notes properties and an expanded property of true. Should redirect to /api/brews/:id. Need to add logic to display in brewlist.
 
@@ -19,7 +20,7 @@ export function SingleBrew(props) {
         <p>{props.brew.notes}</p>
       </div>
       <button>Edit</button>
-      <button>Close</button>
+      <button><Link to={`/brews`}>Back to My Brews</Link></button>
     </div>
     // <li key={ props.id } className="expandedBrew" onClick={() => props.onClick(console.log(props))}>
     // { props.name } { props.recipe } { props.notes }

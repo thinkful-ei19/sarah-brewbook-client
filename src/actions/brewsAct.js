@@ -1,5 +1,5 @@
 import { API_BASE_URL } from '../config';
-import { SubmissionError } from 'redux-form';
+// import { SubmissionError } from 'redux-form';
 import { normalizeResponseErrors } from './utils';
 
 export const FETCH_BREWS_REQUEST = 'FETCH_BREWS_REQUEST'

@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { fetchBrews, toggleExpandBrew } from '../actions/brewsAct';
+import { fetchBrews } from '../actions/brewsAct';
 import { Link } from 'react-router-dom';
+import AddBrewForm from './add-brew-form';
 import './brew-list.css';
 
 class BrewList extends React.Component {
@@ -10,9 +11,9 @@ class BrewList extends React.Component {
     this.props.dispatch(fetchBrews())
   }
 
-//setup onClick for brew expand
+//setup onClick for brew expand if were to expand onClick
 handleOpenBrewClick() {
-  const brew = this.props.brews.brews.filter(brew => brew.id === this.props.id);
+//   const brew = this.props.brews.brews.filter(brew => brew.id === this.props.id);
   console.log(this.props.brews.brews);
   }
 
@@ -24,28 +25,19 @@ render() {
     return(
         <li key={brew.id}> 
         <Link to={`/brews/${brew.id}`}>{brew.name}</Link>
-          {/* <div className="recipe">
-          <h3>Recipe</h3>
-          <p>{ brew.recipe }</p>
-          </div>
-          <div className="notes">
-          <h3>Notes</h3>
-          <p>{brew.notes}</p>
-          </div> */}
         <button onClick={() => this.handleOpenBrewClick(console.log(brew.id))}>Open</button>
-        {/* <button>Edit</button>
-        <button>Close</button> */}
         </li>
     )
 })
   return(
     <div className="brewList">
-      <h1 className="App-intro">
+      <h1>
            MY BREWS
           </h1>
       <ul>
         { brewList }
       </ul>
+      <AddBrewForm />
     </div>
   )
 }
