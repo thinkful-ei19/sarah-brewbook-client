@@ -15,11 +15,13 @@ export class AddBrewForm extends React.Component{
    
    render(){
        return(
+          
            <form className="addBrew"
                onSubmit={this.props.handleSubmit(values =>
                    this.onSubmit(values)
            )}
            >
+           <h2>Add a New Brew</h2>
            <label htmlFor="addBrew">Brew:</label>
                <Field 
                    component={Input}

@@ -15,7 +15,7 @@ render() {
   console.log(this.props);
   const brewList = this.props.brews.brews.map((brew, index)=>{
     return(
-        <li key={index}> {brew.name} </li>
+        <li key={brew.id}> {brew.name} </li>
     )
 })
   return(

@@ -20,7 +20,8 @@ export default class Calculator extends React.Component {
 
     render() {
         return (
-            <form>
+        <form>
+        <h2 className="calc-header">Calculator</h2>
         <label htmlFor="OGinput">OG </label>
         <input id="OGinput" name="OGinput" type="number" step="0.001" ref="OGinput" defaultValue="1.050" onChange={()=>this.onChangeHandler()}/>
         <br/>
