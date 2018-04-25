@@ -1,5 +1,7 @@
 import React from 'react';
 
+//not in use may incorporate with multiple calcs
+
 export default function Output(props) {
     return (
         <div className="form-group">
