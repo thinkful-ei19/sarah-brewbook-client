@@ -23,7 +23,14 @@ export const ADD_BREW='ADD_BREW'
 export const addBrew = (brew) => ({
   type: ADD_BREW,
   brew
+});
+
+export const TOGGLE_EXPAND_BREW = 'EXPAND_BREW'
+export const toggleExpandBrew = (brew) => ({
+  type: TOGGLE_EXPAND_BREW,
+  brew
 })
+//need to add fetchbrew by id for toggle brew?
 
 
 export const fetchBrews = brews => dispatch => {
