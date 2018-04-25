@@ -20,6 +20,9 @@ render() {
 })
   return(
     <div className="brewList">
+      <h1 className="App-intro">
+           MY BREWS
+          </h1>
       <ul>
         { brewList }
       </ul>
