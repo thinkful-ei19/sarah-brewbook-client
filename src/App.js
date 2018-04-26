@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router
 import BrewList from './components/brewList';
 import Calculator from './components/calculators';
 import SingleBrew from './components/brew-card';
+import RegistrationPage from './components/registration-page';
 
 import {refreshAuthToken, clearAuth, warningAuth} from './actions/auth';
 
@@ -77,6 +78,7 @@ componentDidMount() {
           <Route exact path="/brews" component={BrewList} />
           <Route path="/brews/:brewId" component={SingleBrew} />
         </Switch>
+        <Route exact path="/register" component={RegistrationPage} />
       </div>
       </Router>
     );
@@ -91,7 +93,7 @@ componentDidMount() {
 
 // "abv.value=(Number(OG.value)-Number(FG.value))* 131.25"
 
-export default connect()(App);
+export default withRouter(connect()(App));
 
 // Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
 // withRouter will pass updated match, location, and history props to the wrapped component whenever it renders.
