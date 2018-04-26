@@ -4,6 +4,7 @@ import { fetchBrews } from '../actions/brewsAct';
 import { Link } from 'react-router-dom';
 import AddBrewForm from './add-brew-form';
 import './brew-list.css';
+import requiresLogin from './requires-login';
 
 class BrewList extends React.Component {
   componentDidMount(){
@@ -44,7 +45,8 @@ render() {
 }
 
 const mapStateToProps = (state) => ({
-  brews: state.brews
+  brews: state.brews,
+  loggedIn: state.auth.currentUser !== null
 })
 
-export default connect(mapStateToProps)(BrewList);
+export default requiresLogin()(connect(mapStateToProps)(BrewList));
