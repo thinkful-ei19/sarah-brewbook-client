@@ -40,9 +40,16 @@ export const toggleExpandBrew = (brew) => ({
 //need to add fetchbrew by id for toggle brew?
 
 
-export const fetchBrews = brews => dispatch => {
+export const fetchBrews = brews => (dispatch, getState) => {
   dispatch(fetchBrewsRequest()); //tells us we've begun loading
-  return fetch(`${API_BASE_URL}/api/brews`)
+  const authToken = getState().auth.authToken;
+  console.log(authToken);
+  return fetch(`${API_BASE_URL}/api/brews`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${authToken}`
+    }
+  })
       .then(res => {
           console.log(res);
         if(!res.ok) {
@@ -55,23 +62,29 @@ export const fetchBrews = brews => dispatch => {
       .catch(err => dispatch(fetchBrewsError(err)));
   }
 
-  export const createBrew = (name, recipe, notes) => dispatch => {
+  export const createBrew = (name, recipe, notes, userId) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    console.log(authToken);
     
     return (
         fetch(`${API_BASE_URL}/api/brews`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
             },
             body: JSON.stringify({
                 name,
                 recipe,
-                notes
+                notes,
+                userId
             })
         })
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
+            .then(res => dispatch(addBrew(res)))
             .then((body) => console.log(body))
+            // .catch(err => {})
             
     );
 }

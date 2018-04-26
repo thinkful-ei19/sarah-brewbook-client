@@ -11,7 +11,8 @@ import Calculator from './components/calculators';
 import SingleBrew from './components/brew-card';
 import RegistrationPage from './components/registration-page';
 
-import {refreshAuthToken, clearAuth, warningAuth} from './actions/auth';
+import {refreshAuthToken, clearAuth } from './actions/auth';
+import { HeaderBar } from './components/header-bar';
 
 class App extends Component {
 
@@ -67,11 +68,7 @@ stopPeriodicRefresh() {
     return (
       <Router>
       <div className="App">
-        <header className="App-header">
-        {/* pull this out into header component */}
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h1 className="App-title">BrewBook</h1>
-        </header>
+        <HeaderBar />
         <Calculator />
         <Route exact path="/" component={LandingPage} />
         <Switch>
@@ -86,7 +83,7 @@ stopPeriodicRefresh() {
 }
 
 const mapStateToProps = state => ({
-  // hasAuthToken: state.auth.authToken !== null,
+  hasAuthToken: state.auth.authToken !== null,
   loggedIn: state.auth.currentUser !== null
   // warning: state.auth.warning 
 });
