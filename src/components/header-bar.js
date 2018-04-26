@@ -4,11 +4,12 @@ import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import './header-bar.css'
 
-export class HeaderBar extends React.Component {
+ 
+class HeaderBar extends React.Component {
     logOut() {
-        // this.props.dispatch(clearAuth());
-        // clearAuthToken();
-        console.log(this.state)
+        this.props.dispatch(clearAuth());
+        clearAuthToken();
+        console.log(this.props)
     }
 
     render() {
@@ -24,7 +25,6 @@ export class HeaderBar extends React.Component {
         {/* pull this out into header component */}
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">BrewBook</h1>
-          <button onClick={this.logOut.bind(this)}>Log out</button>
           {logOutButton}
         </header>
         );

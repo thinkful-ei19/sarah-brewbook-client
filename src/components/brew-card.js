@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import requiresLogin from './requires-login';
 
 //brewcard will open when a brew is clicked. Will have brew name, recipe and notes properties and an expanded property of true. Should redirect to /api/brews/:id. Need to add logic to display in brewlist.
 
@@ -37,4 +38,4 @@ const mapStateToProps = (state, props) => {
   return {brew}
 }
 
-export default connect(mapStateToProps)(SingleBrew);
+export default requiresLogin()(connect(mapStateToProps)(SingleBrew));

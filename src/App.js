@@ -12,7 +12,7 @@ import SingleBrew from './components/brew-card';
 import RegistrationPage from './components/registration-page';
 
 import {refreshAuthToken, clearAuth } from './actions/auth';
-import { HeaderBar } from './components/header-bar';
+import HeaderBar from './components/header-bar';
 
 class App extends Component {
 
