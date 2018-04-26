@@ -1,92 +1,96 @@
-import React, { Component } from 'react';
+import React, { Component } from "react"
 // import logo from './logo.svg';
-import './App.css';
-import { connect } from 'react-redux';
-import {fetchBrews} from './actions/brewsAct';
-import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom'
+import "./App.css"
+import { connect } from "react-redux"
+import { fetchBrews } from "./actions/brewsAct"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  withRouter
+} from "react-router-dom"
 
-import LandingPage from './components/landing-page';
-import BrewList from './components/brewList';
-import Calculator from './components/calculators';
-import SingleBrew from './components/brew-card';
-import RegistrationPage from './components/registration-page';
+import LandingPage from "./components/landing-page"
+import BrewList from "./components/brewList"
+import Calculator from "./components/calculators"
+import SingleBrew from "./components/brew-card"
+import RegistrationPage from "./components/registration-page"
 
-import {refreshAuthToken, clearAuth } from './actions/auth';
-import { HeaderBar } from './components/header-bar';
+import { refreshAuthToken, clearAuth } from "./actions/auth"
+import { HeaderBar } from "./components/header-bar"
 
 class App extends Component {
+  // componentDidMount() {
+  //   this.props.dispatch(fetchBrews())
+  // }
 
-// componentDidMount() {
-//   this.props.dispatch(fetchBrews())
-// }
-
-componentDidUpdate(prevProps) {
-  if (!prevProps.loggedIn && this.props.loggedIn) {
+  componentDidUpdate(prevProps) {
+    if (!prevProps.loggedIn && this.props.loggedIn) {
       // When we are logged in, refresh the auth token periodically
-      this.startPeriodicRefresh();
-  } else if (prevProps.loggedIn && !this.props.loggedIn) {
+      this.startPeriodicRefresh()
+    } else if (prevProps.loggedIn && !this.props.loggedIn) {
       // Stop refreshing when we log out
-      this.stopPeriodicRefresh();
+      this.stopPeriodicRefresh()
+    }
   }
-}
 
-// componentDidMount() {
-//   setTimeout(() => {
-//       this.props.dispatch(clearAuth());
-//   }, 60 * 5 * 1000) //logout after 5 min
-//   setTimeout(() => {
-//       this.props.dispatch(warningAuth());
-//   }, 60 * 4 * 1000) //logout after 5 min
-// }
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //       this.props.dispatch(clearAuth());
+  //   }, 60 * 5 * 1000) //logout after 5 min
+  //   setTimeout(() => {
+  //       this.props.dispatch(warningAuth());
+  //   }, 60 * 4 * 1000) //logout after 5 min
+  // }
 
-componentWillUnmount() {
-  this.stopPeriodicRefresh();
-}
+  componentWillUnmount() {
+    this.stopPeriodicRefresh()
+  }
 
-startPeriodicRefresh() {
-  this.refreshInterval = setInterval(
+  startPeriodicRefresh() {
+    this.refreshInterval = setInterval(
       () => this.props.dispatch(refreshAuthToken()),
       60 * 10 * 1000 // update to 10 min
-  );
-}
-
-stopPeriodicRefresh() {
-  if (!this.refreshInterval) {
-      return;
+    )
   }
 
-  clearInterval(this.refreshInterval);
-}
+  stopPeriodicRefresh() {
+    if (!this.refreshInterval) {
+      return
+    }
 
-// warning() {
-//   if(this.props.warning) {
-//       return <h1>Session will end in 1 minute</h1>
-//   }
-// }
+    clearInterval(this.refreshInterval)
+  }
+
+  // warning() {
+  //   if(this.props.warning) {
+  //       return <h1>Session will end in 1 minute</h1>
+  //   }
+  // }
 
   render() {
     return (
       <Router>
-      <div className="App">
-        <HeaderBar />
-        <Calculator />
-        <Route exact path="/" component={LandingPage} />
-        <Switch>
-          <Route exact path="/brews" component={BrewList} />
-          <Route path="/brews/:brewId" component={SingleBrew} />
-        </Switch>
-        <Route exact path="/register" component={RegistrationPage} />
-      </div>
+        <div className="App">
+          <HeaderBar {...this.props} />
+          <Calculator />
+          <Route exact path="/" component={LandingPage} />
+          <Switch>
+            <Route exact path="/brews" component={BrewList} />
+            <Route path="/brews/:brewId" component={SingleBrew} />
+          </Switch>
+          <Route exact path="/register" component={RegistrationPage} />
+        </div>
       </Router>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => ({
   hasAuthToken: state.auth.authToken !== null,
   loggedIn: state.auth.currentUser !== null
-  // warning: state.auth.warning 
-});
+  // warning: state.auth.warning
+})
 
 // "abv.value=(Number(OG.value)-Number(FG.value))* 131.25"
 
@@ -94,4 +98,4 @@ const mapStateToProps = state => ({
 
 // Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
 // withRouter will pass updated match, location, and history props to the wrapped component whenever it renders.
-export default withRouter(connect(mapStateToProps)(App));
+export default connect(mapStateToProps)(App)
