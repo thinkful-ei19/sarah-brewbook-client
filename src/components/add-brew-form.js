@@ -3,6 +3,7 @@ import {reduxForm, Field} from 'redux-form';
 import Input from '../components/input';
 import { required } from '../validators';
 import { addBrew, createBrew } from '../actions/brewsAct';
+import './add-brew-form.css'
 
 //Need to convert to link that opens form. Form will have inputs for name, recipe and brewers notes. Will change state of adding to true.
 

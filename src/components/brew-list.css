@@ -7,3 +7,12 @@ button {
   margin-left: 25px;
   margin-bottom: 25px;
 }
+
+h1, li {
+  text-shadow: rgb(97, 89, 89) 0.1em 0.1em 0.2em;
+
+}
+
+li {
+  margin: 15px;
+}

@@ -25,7 +25,7 @@ render() {
   const brewList = this.props.brews.brews.map((brew, index)=>{
     return(
         <li key={brew.id}> 
-        <Link to={`/brews/${brew.id}`}>{brew.name}</Link>
+        <Link to={`/brews/${brew.id}`} role="navigation">{brew.name}</Link>
         {/* <button onClick={() => this.handleOpenBrewClick(console.log(brew.id))}>Open</button> */}
         </li>
     )
