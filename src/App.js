@@ -70,6 +70,7 @@ stopPeriodicRefresh() {
       <div className="App">
         <HeaderBar />
         <Calculator />
+        <img className="beer-image" typeof="foaf:Image" src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/beer-drink-sample-sampler.png?itok=JV4E4iVY" width="520" height="292" alt="Photo of beers on table"/>
         <Route exact path="/" component={LandingPage} />
         <Switch>
           <Route exact path="/brews" component={BrewList} />

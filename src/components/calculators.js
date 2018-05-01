@@ -1,4 +1,6 @@
 import React from 'react';
+import './calculators.css';
+
 
 export default class Calculator extends React.Component {
     constructor(props) {
@@ -20,8 +22,9 @@ export default class Calculator extends React.Component {
 
     render() {
         return (
-        <form>
+        <form className="calculators">
         <h2 className="calc-header">Calculator</h2>
+        <p className="description">Enter your measurements for Original Gravity and Final Gravity to calculate you Alcohol by Volume </p>
         <label htmlFor="OGinput">OG </label>
         <input id="OGinput" name="OGinput" type="number" step="0.001" ref="OGinput" defaultValue="1.050" onChange={()=>this.onChangeHandler()}/>
         <br/>

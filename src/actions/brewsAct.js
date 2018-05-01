@@ -103,3 +103,56 @@ export const fetchBrew = brew => dispatch => {
       // .then(brews => console.log(brews))
       // .catch(err => dispatch(fetchBrewsError(err)));
   }
+
+  //UPDATE existing brew
+
+  export const updateBrew = (id, name, recipe, notes) => (dispatch, getState)=> {
+    const brew={
+        _id: id,
+        name,
+        recipe,
+        notes
+    }
+    const authToken = getState().auth.authToken;
+    console.log(authToken);
+    
+    return fetch(`${API_BASE_URL}/api/brews/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(brew),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
+            
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(brews=> dispatch(fetchBrews()))
+        // .then((body) => console.log(body))
+        .catch(err => console.error(err));
+}
+
+//DELETE brew
+
+export const DELETE_BREW = 'DELETE_BREW';
+export const deleteBrew = (id) => {
+    return {
+        type: DELETE_BREW,
+        id
+    }
+}
+
+export const deleteBrewFetch = id => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    fetch(`${API_BASE_URL}/api/brews/${id}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
+    })
+        .then(brews=> dispatch(fetchBrews()))
+        .catch(err=> {
+            console.log(err);
+        })
+    
+}

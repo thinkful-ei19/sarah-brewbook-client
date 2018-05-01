@@ -2,5 +2,20 @@
   background-color: tan;
   height: 90px;
   padding: 20px;
+  text-decoration: sienna;
+  border: solid sienna 5px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.App-title {
   color: white;
+  font-size: 40px;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.logout {
+  position: absolute;
+  right: 30px;
+  top: 70px;
 }

@@ -26,7 +26,7 @@ render() {
     return(
         <li key={brew.id}> 
         <Link to={`/brews/${brew.id}`}>{brew.name}</Link>
-        <button onClick={() => this.handleOpenBrewClick(console.log(brew.id))}>Open</button>
+        {/* <button onClick={() => this.handleOpenBrewClick(console.log(brew.id))}>Open</button> */}
         </li>
     )
 })
