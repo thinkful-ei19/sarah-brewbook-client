@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import requiresLogin from './requires-login';
-import { deleteBrew, deleteBrewSuccess } from '../actions/brewsAct';
+import { deleteBrew, deleteBrewFetch } from '../actions/brewsAct';
 import './brew-card.css';
 
 //brewcard will open when a brew is clicked. Will have brew name, recipe and notes properties and an expanded property of true. Should redirect to /api/brews/:id. Need to add logic to display in brewlist.
@@ -31,7 +31,7 @@ export function SingleBrew(props) {
         <h3 className="notes-header brew-headers">Notes</h3>
         <p className="notes brew-paragraphs">{props.brew.notes}</p>
       </div>
-      <button onClick={(e) => props.dispatch(deleteBrewSuccess(props.brew.id))}>Delete</button>
+      <button onClick={(e) => props.dispatch(deleteBrewFetch(props.brew.id))}>Delete</button>
       <button><Link to={`/brews`}>Back to My Brews</Link></button>
     </div>
     // <li key={ props.id } className="expandedBrew" onClick={() => props.onClick(console.log(props))}>

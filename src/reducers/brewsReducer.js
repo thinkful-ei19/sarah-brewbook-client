@@ -55,7 +55,7 @@ const brewsReducer = (state =  initialState, action) => {
     const newArray = newState.brews.splice(deleteIndex, 1)
     console.log(newArray)
     console.log(newState)
-    history.push('/brews')
+    // history.push('/brews')
     return newState
 
     // let brewArray = [...state.brews]

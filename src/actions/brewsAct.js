@@ -1,6 +1,7 @@
 import { API_BASE_URL } from '../config';
 // import { SubmissionError } from 'redux-form';
 import { normalizeResponseErrors } from './utils';
+import history from '../history';
 
 export const FETCH_BREWS_REQUEST = 'FETCH_BREWS_REQUEST'
 export const fetchBrewsRequest = () => ({
@@ -150,12 +151,13 @@ export const deleteBrewFetch = id => (dispatch, getState) => {
             Authorization: `Bearer ${authToken}`
         }
     })
-        .then(id => dispatch(deleteBrewSuccess(id)))
-        .then(res => res.json())
-        .then(res => console.log(res.body))
-        // .then(res => dispatch(deleteBrewSuccess(res)))
-        .catch(err=> {
-            console.log(err);
+        //move push to action
+        
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(res.statusText);
+            }
+            return dispatch(deleteBrewSuccess(id))
         })
-    
-}
+        .then(history.push('/brews'))
+    }

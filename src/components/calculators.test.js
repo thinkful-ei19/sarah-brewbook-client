@@ -3,7 +3,7 @@ import Calculator from './calculators';
 import { shallow } from 'enzyme';
 
 describe ('<Calculator />', () => {
-  it('Should render without creashing', () => {
+  it('Should render without crashing', () => {
     shallow(<Calculator />);
   })
 })

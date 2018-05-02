@@ -3,7 +3,7 @@ import AddBrewForm from './add-brew-form';
 import { shallow } from 'enzyme';
 
 describe ('<AddBrewForm />', () => {
-  it('Should render without creashing', () => {
+  it('Should render without crashing', () => {
     shallow(<AddBrewForm />);
   })
 })
