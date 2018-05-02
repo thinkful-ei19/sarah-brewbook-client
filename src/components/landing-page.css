@@ -30,3 +30,9 @@ background: linear-gradient(
   text-align: center;
   display: inline-block;
 }
+
+.text {
+  color: white;
+  /* font-size: 40px; */
+  text-shadow: black 0.1em 0.1em 0.2em;
+}

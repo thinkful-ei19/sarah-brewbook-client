@@ -17,7 +17,7 @@ export class AddBrewForm extends React.Component{
    render(){
        return(
           
-           <form className="addBrew"
+           <form className="addBrew text"
                onSubmit={this.props.handleSubmit(values =>
                    this.onSubmit(values)
            )}

@@ -14,7 +14,7 @@
   border-radius: 25px;
 }
 
-h2, p, label, output, h1 {
+.calc, label, output {
   color: white;
   /* font-size: 40px; */
   text-shadow: black 0.1em 0.1em 0.2em;

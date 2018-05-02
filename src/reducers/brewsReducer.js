@@ -46,17 +46,35 @@ const brewsReducer = (state =  initialState, action) => {
       expandBrew: !state.expandBrew
     })
   } else if (action.type === DELETE_BREW_SUCCESS) {
-    // const newState = Object.assign([], state);
-    let brewArray = [...state.brews]
-    let deletedIndex = brewArray.find(brew => brew.id === action.id)
-    console.log(action.id)
-    console.log(brewArray)
-    brewArray.splice(deletedIndex, 1)
-    console.log(brewArray)
+    const newState = Object.assign([], state);
+    let deleteIndex = state.brews.map(function(brew){
+      return brew.id;
+    }).indexOf(action.id);
+    console.log(deleteIndex)
+    console.log(newState)
+    const newArray = newState.brews.splice(deleteIndex, 1)
+    console.log(newArray)
+    console.log(newState)
     history.push('/brews')
-    return Object.assign({}, state, {
-      brews: brewArray
-    })
+    return newState
+
+    // let brewArray = [...state.brews]
+    // let deleteIndex = brewArray.map(function(brew){
+    //   return brew.id;
+    // }).indexOf(action.id)
+    // // let deleteIndex = brewArray.find(brew => {
+    // //   brew[brews.id] === action.id;
+    //   // console.log(brew.id);
+    //   // })
+    // console.log(deleteIndex)
+    // console.log(brewArray)
+    // const newArray = brewArray.splice(deleteIndex, 1)
+    // console.log(newArray)
+    // console.log(brewArray)
+    // history.push('/brews')
+    // return Object.assign({}, state, {
+    //   brews: brewArray
+    // })
   }
   // else if (action.type === FETCH_BREW_SUCCESS) {
   //   return Object.assign({}, state, {

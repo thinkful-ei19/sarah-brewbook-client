@@ -16,13 +16,13 @@ export function SingleBrew(props) {
   //   console.log('clicked:', this);
   // }
   
-  function handleDeleteClick() {
-    console.log('clicked');
-  }
+  // function handleDeleteClick() {
+  //   console.log('clicked');
+  // }
 
   return (
     <div className="singleBrew">
-      <h2 className="single-brew-header">{props.brew.name}</h2>
+      <h2 className="single-brew-header text">{props.brew.name}</h2>
       <div className="recipe">
         <h3 className="recipe-header brew-headers">Recipe</h3>
         <p className="recipe brew-paragraphs">{ props.brew.recipe }</p>
@@ -41,6 +41,7 @@ export function SingleBrew(props) {
 }
 
 const mapStateToProps = (state, props) => {
+  loggedIn: state.auth.currentUser !== null,
   console.log(props);
   const brewId = props.match.params.brewId;
   console.log(brewId);

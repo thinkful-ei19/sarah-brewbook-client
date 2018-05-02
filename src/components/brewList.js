@@ -32,7 +32,7 @@ render() {
 })
   return(
     <div className="brewList">
-      <h1>
+      <h1 className="brews-head text">
            MY BREWS
           </h1>
       <ul>

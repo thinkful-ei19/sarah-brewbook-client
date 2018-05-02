@@ -15,8 +15,8 @@ export function LandingPage(props) {
 
     return (
         <div className="home">
-            <h1>Welcome to Brewbook</h1>
-            <p className="page-description">Homebrewers keep track of the beers you brew online with Brewbook! Register for an account below and login to start your book. Keep a list of your brews, recipes and any brewers' notes. Happy Brewing!</p>
+            <h1 className="welcome text">Welcome to Brewbook</h1>
+            <p className="page-description text">Homebrewers keep track of the beers you brew online with Brewbook! Register for an account below and login to start your book. Keep a list of your brews, recipes and any brewers' notes. Happy Brewing!</p>
             <LoginForm />
             <Link className="lp-link" to="/register">Link to Register</Link>
         </div>
