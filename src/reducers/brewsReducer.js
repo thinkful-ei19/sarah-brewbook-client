@@ -1,9 +1,11 @@
+import history from '../history';
 import {
   FETCH_BREWS_REQUEST,
   FETCH_BREWS_SUCCESS,
   FETCH_BREWS_ERROR,
   ADD_BREW,
-  TOGGLE_EXPAND_BREW
+  TOGGLE_EXPAND_BREW,
+  DELETE_BREW_SUCCESS
 } from '../actions/brewsAct';
 
 const initialState = {
@@ -43,7 +45,19 @@ const brewsReducer = (state =  initialState, action) => {
     return Object.assign({}, state, {
       expandBrew: !state.expandBrew
     })
-  } 
+  } else if (action.type === DELETE_BREW_SUCCESS) {
+    // const newState = Object.assign([], state);
+    let brewArray = [...state.brews]
+    let deletedIndex = brewArray.find(brew => brew.id === action.id)
+    console.log(action.id)
+    console.log(brewArray)
+    brewArray.splice(deletedIndex, 1)
+    console.log(brewArray)
+    history.push('/brews')
+    return Object.assign({}, state, {
+      brews: brewArray
+    })
+  }
   // else if (action.type === FETCH_BREW_SUCCESS) {
   //   return Object.assign({}, state, {
   //     brews: brews.action

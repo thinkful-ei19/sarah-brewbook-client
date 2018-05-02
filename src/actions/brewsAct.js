@@ -134,23 +134,26 @@ export const fetchBrew = brew => dispatch => {
 
 //DELETE brew
 
-export const DELETE_BREW = 'DELETE_BREW';
-export const deleteBrew = (id) => {
+export const DELETE_BREW_SUCCESS = 'DELETE_BREW_SUCCESS'
+export const deleteBrewSuccess = (id) => {
     return {
-        type: DELETE_BREW,
+        type: DELETE_BREW_SUCCESS,
         id
     }
 }
 
 export const deleteBrewFetch = id => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    fetch(`${API_BASE_URL}/api/brews/${id}`, {
+    return fetch(`${API_BASE_URL}/api/brews/${id}`, {
         method: 'DELETE',
         headers: {
             Authorization: `Bearer ${authToken}`
         }
     })
-        .then(brews=> dispatch(fetchBrews()))
+        .then(id => dispatch(deleteBrewSuccess(id)))
+        .then(res => res.json())
+        .then(res => console.log(res.body))
+        // .then(res => dispatch(deleteBrewSuccess(res)))
         .catch(err=> {
             console.log(err);
         })

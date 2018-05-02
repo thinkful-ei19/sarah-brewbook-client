@@ -1,6 +1,8 @@
 ul
 {
-list-style-type: none;
+  list-style-type: none;
+  width: 70%;
+  margin: auto;
 }
 button {
   padding: 5px;
@@ -14,5 +16,24 @@ h1, li {
 }
 
 li {
-  margin: 15px;
+  background: white;
+  padding: 2.1%;
+  margin: 2%;
+  border: solid black 2px;
+  border-radius: 25px;
+}
+
+.brewList {
+  margin: auto;
+  border: solid black 5px;
+background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.6)
+  );
+  margin-top: 3.1%;
+  padding: 2.1%;
+  padding-bottom: 40px;
+  width: 35%;
+  border-radius: 25px;
 }

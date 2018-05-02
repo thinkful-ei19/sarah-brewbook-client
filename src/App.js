@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import {fetchBrews} from './actions/brewsAct';
-import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
+// import { BrowserHistory } from 'react-history';
 
 import LandingPage from './components/landing-page';
 import BrewList from './components/brewList';
@@ -71,11 +72,11 @@ stopPeriodicRefresh() {
         <HeaderBar />
         <main role="main">
         <Calculator />
-        <img className="beer-image" typeof="foaf:Image" src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/beer-drink-sample-sampler.png?itok=JV4E4iVY" width="520" height="292" alt="Photo of beers on table"/>
+        <img className="beer-image" typeof="foaf:Image" src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/beer-drink-sample-sampler.png?itok=JV4E4iVY" width="520" height="292" alt="Beers on table"/>
         <Route exact path="/" component={LandingPage} />
         <Switch>
           <Route exact path="/brews" component={BrewList} />
-          <Route path="/brews/:brewId" component={SingleBrew} />
+          <Route exact path="/brews/:brewId" component={SingleBrew} />
         </Switch>
         <Route exact path="/register" component={RegistrationPage} />
         </main>
