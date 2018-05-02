@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import {fetchBrews} from './actions/brewsAct';
-import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
-// import { BrowserHistory } from 'react-history';
+import { Router, Switch, Route, withRouter } from 'react-router-dom';
+import history from './history';
 
 import LandingPage from './components/landing-page';
 import BrewList from './components/brewList';
@@ -67,7 +67,7 @@ stopPeriodicRefresh() {
 
   render() {
     return (
-      <Router>
+      <Router history={history}>
       <div className="App">
         <HeaderBar />
         <main role="main">
