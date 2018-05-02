@@ -24,12 +24,14 @@ export default class Calculator extends React.Component {
         return (
         <form className="calculators">
         <h2 className="calc-header">Calculator</h2>
-        <p className="description">Enter your measurements for Original Gravity and Final Gravity to calculate you Alcohol by Volume </p>
-        <label htmlFor="OGinput">OG </label>
+        <p className="description">Enter measurements for Original Gravity and Final Gravity to calculate Alcohol by Volume </p>
+        <label htmlFor="OGinput">Original Gravity (OG): </label>
+        <br/>
         <input id="OGinput" name="OGinput" type="number" step="0.001" ref="OGinput" defaultValue="1.050" onChange={()=>this.onChangeHandler()}/>
         <br/>
         <br/>
-        <label htmlFor="FGinput">FG </label>
+        <label htmlFor="FGinput">Final Gravity (FG): </label>
+        <br/>
         <input id="FGinput" name="FGinput" type="number" step="0.001" ref="FGinput" defaultValue="1.010" onChange={() => this.onChangeHandler()}/>
         <br/>
         <br/>
