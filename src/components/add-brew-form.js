@@ -1,5 +1,5 @@
 import React from 'react';
-import {reduxForm, Field} from 'redux-form';
+import {reduxForm, Field, reset} from 'redux-form';
 import Input from '../components/input';
 import { required } from '../validators';
 import { addBrew, createBrew } from '../actions/brewsAct';
@@ -11,6 +11,7 @@ export class AddBrewForm extends React.Component{
   onSubmit(value) {
     //    this.props.dispatch(addBrew(value));
        this.props.dispatch(createBrew(value.name, value.recipe, value.notes));
+       this.props.dispatch(reset('brew'))
 
    }
    
