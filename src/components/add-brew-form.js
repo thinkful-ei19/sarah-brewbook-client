@@ -9,7 +9,7 @@ import './add-brew-form.css'
 
 export class AddBrewForm extends React.Component{ 
   onSubmit(value) {
-       this.props.dispatch(addBrew(value));
+    //    this.props.dispatch(addBrew(value));
        this.props.dispatch(createBrew(value.name, value.recipe, value.notes));
 
    }
