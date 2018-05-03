@@ -22,7 +22,6 @@ class HeaderBar extends React.Component {
         }
         return (
           <header role="banner" className="header-bar">
-        {/* pull this out into header component */}
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">BrewBook</h1>
           {logOutButton}
