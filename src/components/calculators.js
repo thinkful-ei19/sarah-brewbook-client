@@ -43,7 +43,7 @@ export default class Calculator extends React.Component {
 
         this.refs.outputIDResSug.value = `Calories from sugar: ${this.calculateCalResSug(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(1)} per 12oz serving`;
 
-        this.refs.outputIDCalAlc.value = `Calories from sugar: ${this.calculateCalAlcohol(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(1)} per 12oz serving`;
+        this.refs.outputIDCalAlc.value = `Calories from alcohol: ${this.calculateCalAlcohol(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(1)} per 12oz serving`;
 
     }
 
@@ -51,7 +51,7 @@ export default class Calculator extends React.Component {
         return (
         <form className="calculators">
         <h2 className="calc-header calc">Calculator</h2>
-        <p className="description calc">Enter measurements for Original Gravity and Final Gravity to calculate Alcohol by Volume </p>
+        <p className="description calc">Enter Original Gravity and Final Gravity measurements to calculate Alcohol by Volume and Calories</p>
         <label htmlFor="OGinput">Original Gravity (OG): </label>
         <br/>
         <input id="OGinput" name="OGinput" type="number" step="0.001" ref="OGinput" defaultValue="1.050" onChange={()=>this.onChangeHandler()}/>
@@ -68,13 +68,13 @@ export default class Calculator extends React.Component {
         <output id="outputIDAtten" ref="outputIDAtten" defaultValue="79%">Apparent Attenuation is: 79%</output>
         <br/>
         <br/>
-        <output id="outputIDTot" ref="outputIDTot" defaultValue="163.7"> Calories: 163.7 per 12oz </output>
+        <output id="outputIDTot" ref="outputIDTot" defaultValue="165.2"> Calories: 165.2 per 12oz serving</output>
         <br/>
         <br/>
-        <output id="outputIDResSug" ref="outputIDResSug" defaultValue="79%">Calories from sugar per 12oz</output>
+        <output id="outputIDResSug" ref="outputIDResSug" defaultValue="60.4">Calories from sugar: 60.4 per 12oz serving</output>
         <br/>
         <br/>
-        <output id="outputIDCalAlc" ref="outputIDCalAlc" defaultValue="79%">Calories from alcohol per 12oz</output>
+        <output id="outputIDCalAlc" ref="outputIDCalAlc" defaultValue="104.8">Calories from alcohol: 104.8 per 12oz serving</output>
       </form>
         );
     }

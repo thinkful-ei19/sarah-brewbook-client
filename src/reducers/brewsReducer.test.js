@@ -3,11 +3,31 @@ import { fetchBrewsRequest, fetchBrewsSuccess, fetchBrewsError, addBrew,deleteBr
 
 describe('brewsReducer', () => {
   it('should set the initial state when nothing is passed in', () => {
+    const newState = brewsReducer(undefined, {
+      type: '@@unknown'
+    });
 
+    expect(newState).toEqual({
+      brews: [],
+      loading: false,
+      error: null,
+      editBrew: false
+    })
   });
 
   it('should return the current state on an unknown action', () => {
+    const state = {
+      brews: [{name: 'IPA'}],
+      loading: true,
+      error: true,
+      editBrew: true
+    };
 
+    const newState = brewsReducer(state, {
+      type: '@@unknownaction'
+    });
+    console.log(state);
+    expect(newState).toEqual(state);
   });
 
   it('should handle the fetchBrewsRequest action', () => {

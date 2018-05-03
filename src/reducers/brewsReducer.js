@@ -12,7 +12,7 @@ const initialState = {
     brews: [],
     loading: false,
     error: null,
-    expandBrew: false
+    editBrew: false
 }
 
 const brewsReducer = (state =  initialState, action) => {
