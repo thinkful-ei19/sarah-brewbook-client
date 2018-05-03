@@ -42,6 +42,7 @@
 
 input, button, textarea {
   border: solid black 2px;
+  padding: 10px;
 }
 
 @keyframes App-logo-spin {
