@@ -12,7 +12,7 @@ export default class Calculator extends React.Component {
         };
     }
 
-    calculate(og, fg) {
+    calculateABV(og, fg) {
         return(og - fg) * 131.25;
     }
 
@@ -20,10 +20,31 @@ export default class Calculator extends React.Component {
         return(100*(og-fg)/(og-1.0));
     }
 
-    onChangeHandler() {
-        this.refs.outputID.value = `ABV is: ${this.calculate(this.refs.OGinput.value, this.refs.FGinput.value).toFixed(2)} %`;
+    calculateCalAlcohol(og, fg) {
+        return(1881.22 * fg * (og-fg) / (1.775-og));
+    }
 
-        this.refs.outputIDAtten.value = `Apparent Attenuation is: ${this.calculateAtt(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(2)} %`
+    calculateCalResSug(og, fg) {
+        return(3550 * fg * ((0.1808 * og) + (0.8192 * fg) - 1.0004));
+    }
+
+    calculateCalTot(og, fg) {
+        return(
+        this.calculateCalAlcohol(og, fg) + this.calculateCalResSug(og, fg)
+        );
+    }
+
+    onChangeHandler() {
+        this.refs.outputIDABV.value = `ABV is: ${this.calculateABV(this.refs.OGinput.value, this.refs.FGinput.value).toFixed(2)} %`;
+
+        this.refs.outputIDAtten.value = `Apparent Attenuation is: ${this.calculateAtt(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(2)} %`;
+
+        this.refs.outputIDTot.value = `Calories: ${this.calculateCalTot(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(1)} per 12oz serving`;
+
+        this.refs.outputIDResSug.value = `Calories from sugar: ${this.calculateCalResSug(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(1)} per 12oz serving`;
+
+        this.refs.outputIDCalAlc.value = `Calories from sugar: ${this.calculateCalAlcohol(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(1)} per 12oz serving`;
+
     }
 
     render() {
@@ -41,10 +62,19 @@ export default class Calculator extends React.Component {
         <input id="FGinput" name="FGinput" type="number" step="0.001" ref="FGinput" defaultValue="1.010" onChange={() => this.onChangeHandler()}/>
         <br/>
         <br/>
-        <output id="outputID" ref="outputID" defaultValue="5.25">ABV is: 5.25%</output>
+        <output id="outputIDABV" ref="outputIDABV" defaultValue="5.25">ABV is: 5.25%</output>
         <br/>
         <br/>
         <output id="outputIDAtten" ref="outputIDAtten" defaultValue="79%">Apparent Attenuation is: 79%</output>
+        <br/>
+        <br/>
+        <output id="outputIDTot" ref="outputIDTot" defaultValue="163.7"> Calories: 163.7 per 12oz </output>
+        <br/>
+        <br/>
+        <output id="outputIDResSug" ref="outputIDResSug" defaultValue="79%">Calories from sugar per 12oz</output>
+        <br/>
+        <br/>
+        <output id="outputIDCalAlc" ref="outputIDCalAlc" defaultValue="79%">Calories from alcohol per 12oz</output>
       </form>
         );
     }
