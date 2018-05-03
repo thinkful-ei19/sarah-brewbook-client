@@ -31,7 +31,21 @@ describe('brewsReducer', () => {
   });
 
   it('should handle the fetchBrewsRequest action', () => {
+    const state = {
+      brews: [],
+    loading: false,
+    error: null,
+    editBrew: false
+    };
 
+    const newState =  brewsReducer(state, fetchBrewsRequest());
+
+    console.log(newState);
+    expect(newState).toEqual({ 
+      brews: [], 
+      loading: true, 
+      error: null, 
+      editBrew: false })
   });
 
   it('should handle the fetchBrewsSuccess action', () => {
