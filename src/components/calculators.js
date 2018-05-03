@@ -16,8 +16,14 @@ export default class Calculator extends React.Component {
         return(og - fg) * 131.25;
     }
 
+    calculateAtt(og, fg) {
+        return(100*(og-fg)/(og-1.0));
+    }
+
     onChangeHandler() {
         this.refs.outputID.value = `ABV is: ${this.calculate(this.refs.OGinput.value, this.refs.FGinput.value).toFixed(2)} %`;
+
+        this.refs.outputIDAtten.value = `Apparent Attenuation is: ${this.calculateAtt(this.refs.OGinput.value,this.refs.FGinput.value).toFixed(2)} %`
     }
 
     render() {
@@ -36,6 +42,9 @@ export default class Calculator extends React.Component {
         <br/>
         <br/>
         <output id="outputID" ref="outputID" defaultValue="5.25">ABV is: 5.25%</output>
+        <br/>
+        <br/>
+        <output id="outputIDAtten" ref="outputIDAtten" defaultValue="79%">Apparent Attenuation is: 79%</output>
       </form>
         );
     }
