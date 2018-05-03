@@ -10,3 +10,14 @@ describe('fetchBrewsRequest', () => {
     });
   });
 });
+
+describe('fetchBrewsSuccess', () => {
+  it('Should return the action', () => {
+    const brews = [{'name': 'IPA'}];
+    const action = fetchBrewsSuccess(brews);
+    expect(action).toEqual({
+      type: FETCH_BREWS_SUCCESS,
+      brews
+    });
+  });
+});
