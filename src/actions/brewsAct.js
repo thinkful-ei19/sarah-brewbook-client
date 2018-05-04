@@ -45,7 +45,7 @@ export const fetchBrews = brews => (dispatch, getState) => {
   dispatch(fetchBrewsRequest()); //tells us we've begun loading
   const authToken = getState().auth.authToken;
   console.log(authToken);
-  return fetch(`${API_BASE_URL}/api/brews`, {
+  return fetch(`${API_BASE_URL}/brews`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${authToken}`
@@ -68,7 +68,7 @@ export const fetchBrews = brews => (dispatch, getState) => {
     console.log(authToken);
     
     return (
-        fetch(`${API_BASE_URL}/api/brews`, {
+        fetch(`${API_BASE_URL}/brews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ export const fetchBrews = brews => (dispatch, getState) => {
 
 export const fetchBrew = brew => dispatch => {
   dispatch(fetchBrewsRequest()); //tells us we've begun loading
-  return fetch(`${API_BASE_URL}/api/brews/:id`)
+  return fetch(`${API_BASE_URL}/brews/:id`)
       .then(res => {
           console.log(res);
         if(!res.ok) {
@@ -117,7 +117,7 @@ export const fetchBrew = brew => dispatch => {
     const authToken = getState().auth.authToken;
     console.log(authToken);
     
-    return fetch(`${API_BASE_URL}/api/brews/${id}`, {
+    return fetch(`${API_BASE_URL}/brews/${id}`, {
         method: 'PUT',
         body: JSON.stringify(brew),
         headers: {
@@ -145,7 +145,7 @@ export const deleteBrewSuccess = (id) => {
 
 export const deleteBrewFetch = id => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/api/brews/${id}`, {
+    return fetch(`${API_BASE_URL}/brews/${id}`, {
         method: 'DELETE',
         headers: {
             Authorization: `Bearer ${authToken}`
