@@ -89,14 +89,7 @@ stopPeriodicRefresh() {
 
 const mapStateToProps = state => ({
   hasAuthToken: state.auth.authToken !== null,
-  loggedIn: state.auth.currentUser !== null
-  // warning: state.auth.warning 
+  loggedIn: state.auth.currentUser !== null 
 });
 
-// "abv.value=(Number(OG.value)-Number(FG.value))* 131.25"
-
-// export default withRouter(connect()(App));
-
-// Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
-// withRouter will pass updated match, location, and history props to the wrapped component whenever it renders.
 export default withRouter(connect(mapStateToProps)(App));

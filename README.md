@@ -27,6 +27,9 @@ You can access the app here: https://eager-bassi-3a5db8.netlify.com/
 ## Brew is added to the end of the list:
 ![brew added](https://github.com/thinkful-ei19/sarah-brewbook-client/blob/master/screenshots/brew_added.PNG)
 
+# View and individual brew: 
+![individual brew](https://github.com/thinkful-ei19/sarah-brewbook-client/blob/master/screenshots/view_individual_brew.PNG)
+
 # Calculator:
 
 ![calculators](https://github.com/thinkful-ei19/sarah-brewbook-client/blob/master/screenshots/calculator.PNG)
@@ -42,7 +45,7 @@ You can access the app here: https://eager-bassi-3a5db8.netlify.com/
 
 * Deploy: Heroku-server/Netlify-client
 
-#To-do:
+# To-do:
 * Add Edit capabilities
 * Add tags
 * Add logged-in timeout

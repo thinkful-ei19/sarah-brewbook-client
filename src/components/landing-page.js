@@ -11,8 +11,6 @@ export function LandingPage(props) {
         return <Redirect to="/brews" />;
     }
 
-    //now need to update the BrewList to render username and protected data(BrewList)
-
     return (
         <div className="home">
             <h1 className="welcome text">Welcome to Brewbook</h1>
@@ -28,4 +26,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(LandingPage);
-// export default connect()(LandingPage);
